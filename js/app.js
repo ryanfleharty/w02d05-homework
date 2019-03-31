@@ -24,11 +24,12 @@
 const calculator = {
     numOne: "",
     num1Array: [],
-    // numTwo: "",
-    // num2Array: [],
+    numTwo: "",
+    num2Array: [],
     action: "",
     actionArray: [],
     total: 0,
+    num3Array: [],
 }
 
 let num1 = calculator.numTwo;
@@ -36,35 +37,50 @@ let num1Array = calculator.num1Array;
 let action = calculator.action;
 let actionArray = calculator.actionArray;
 let total = calculator.total;
-// let num2 = calculator.numTwo;
-// let num2Array = calculator.num2Array;
+let num2 = calculator.numTwo;
+let num2Array = calculator.num2Array;
+let num3Array = calculator.num3Array
 
 
 buttonClick = () => {
     $('button').unbind().click(function(e) {
     //grab text from button and put it in screen
     let btn = $(e.target).text();
-    
-    // if (btn >= "0" && btn <= "9") {
-        num1 = btn;
-        num1Array.push(num1);
-    // } else if (btn === "=") {
-    //     runActions();
-            
-    // } 
-    if (btn === NaN) {
-        action = btn;
-        actionArray.push(action);
-    }
-   
-    $('.screen').text(btn);
 
+    $('.screen').text(btn); // make string
     console.log(btn);
+    
+    if (btn != "=") {
+    num1Array.push(btn);
+    }
 
+    num1Array.forEach((btn, index) => {
+     
+        if (isNaN(btn)) {
+            num2Array = num1Array.slice(0, index);
+            actionArray = num1Array.slice(index);
+            num1Array.splice(0);
+
+            num1 = num2Array.join("");
+            console.log(num1);
+            num2 = num1Array.join("");
+            console.log(num2);
+        }
+    });
+
+    if (btn = "=") {
+        runActions();
+    }
     });
 }
 
 $('button').on('click', buttonClick)
+
+
+
+
+// parseInt(num2Array);
+// parseInt(num1Array);
 
 
 // const doMath = () => {
@@ -96,13 +112,16 @@ $('button').on('click', buttonClick)
 
 
 
-// runActions = () => {
-//     if (action === "+"){
-//     total = num1 + num2;
-//     }
-//     $('.screen').text(total);
-//     console.log(total);
-// }
+runActions = () => {
 
+    if (actionArray === "+"){
+    total = num2Array + num1Array;
+    }
+    $('.screen').text(total);
+    console.log(total);
+}
+
+// put strings together into one string
+// convert string to number
 
 
