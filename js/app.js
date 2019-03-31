@@ -8,7 +8,7 @@
 //if clear button render all
 
 const calculon = {
-    input:["4","3","2"],
+    input:[],
     valueA: 0,
     valueB: [],
     operation: null
@@ -79,13 +79,34 @@ const div = (valueA,valueB) =>{
 
 
 
-
-
-// //create button event handlers
-// const $plusbtn = $(plus);
-// $plusbtn.on('click', () => {
-// add();
-// console.log('button was clicked!!');
-// console.log(calculon.input);
-// console.log(calculon.output)
-// });
+//button listeners - Numbers
+$("#1").click(function () {
+    collectInput("1");
+});
+$("#2").click(function () {
+    collectInput("2");
+});
+$("#3").click(function () {
+    collectInput("3");
+});
+$("#4").click(function () {
+    collectInput("4");
+});
+$("#5").click(function () {
+    collectInput("5");
+});
+$("#6").click(function () {
+    collectInput("6");
+});
+$("#7").click(function () {
+    collectInput("7");
+});
+$("#8").click(function () {
+    collectInput("8");
+});
+$("#9").click(function () {
+    collectInput("9");
+});
+$("#0").click(function () {
+    collectInput("0");
+});
