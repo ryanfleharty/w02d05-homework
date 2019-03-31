@@ -100,10 +100,6 @@ render();
 
 
 
-
-
-
-
 // when it gets to this point, operation = ["1", "2", "+", "2"];
 // when I console.log operation after line 110, it has only the operator left
 // num1 and num2 however come back as empty strings
