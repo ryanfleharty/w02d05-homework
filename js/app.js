@@ -31,6 +31,7 @@ let operation = [];
 let num1 = [];
 let num2 = [];
 let finalResult;
+let symbol;
 
 const listenToStuff = () => {
 
@@ -49,14 +50,13 @@ const listenToStuff = () => {
                 render();
                 operation.splice(0);
             } else if (e.target.id === 'equals'){
-                doMath();
                 render();
+                doMath();
+                
                 //bug with this, cant enter numbers after 
                 //hitting the equals sign
             }
-        }
-            
-        
+        }        
     })
 };
 
@@ -104,29 +104,32 @@ render();
 // when I console.log operation after line 110, it has only the operator left
 // num1 and num2 however come back as empty strings
 
+
 const doMath = () => {
     
-    operation.forEach((e, index) => {
+    operation.forEach((item, index) => {
 
-        if (isNaN(parseInt(e))){
-            num1 = operation.splice(0, index).join('');
-            num2 = operation.splice(1).join('');
+        if (isNaN(item)){
+            // num2 = operation.splice(0, index).join('');
+            // num1 = operation.splice(1).join('');
+            symbol = operation.slice(index);
+            num2 = symbol.splice(1);
+            num1 = operation.slice(0, index);
+
+            num1 = num1.join('');
+            num2 = num2.join('');
             
-            if (e === "+"){
+            if (symbol[0] === "+"){
                 finalResult = parseInt(num1) + parseInt(num2);
-            } else if (e === "-"){
+            } else if (symbol[0] === "-"){
                 finalResult = parseInt(num1) - parseInt(num2);
-            } else if (e === "*"){
+            } else if (symbol[0] === "*"){
                 finalResult = parseInt(num1) * parseInt(num2);
-            } else if (e === "/"){
+            } else if (symbol[0] === "/"){
                 finalResult = parseInt(num1) / parseInt(num2);
             }
+            $('.display').append(`<span>${finalResult}</span>`);
         }
-        
-        screenString = toString(finalResult);
-        //render();
-        $('.display').append(`<span>${screenString}</span>`);
-        
     })
 }
 
