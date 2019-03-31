@@ -2,45 +2,72 @@
 const calculon = {
     input:[],
     valueA: 0,
-    valueB: [],
+    valueB: 0,
     operation: 'e'
 }
 //functions
+//if operator, store input in value A until another operator
+const checkForOperation = (str) => {
+    if (str === "+" || "-" || "*" || "/"||'e') {
+        calculon.operation = str;
+        convertInputToValue();
+        console.log(calculon.operation)
+    }else{}
+}
 const collectInput = (str) =>{
+checkForOperation();
 calculon.input.push(str);
 console.log(calculon.input)
 };
-//if operator, store input in value A until another operator
-const checkForOperation = (str) =>{
-        if(str === "+"||"-"||"*"||"/"){
-            calculon.operation = str;
-            console.log(calculon.operation)
-    }
-}
-
 //concatinates strings and parses to number
 //stores in StoreA
-const convertStrings =(arr) => {
+const convertInputToValue =(arr) => {
     arr = calculon.input;
     for (let i = 0; i < calculon.input.length; i++) {
-        
+        if (calculon.input){
+        calculon.valueB += arr[i];
+        calculon.valueB = parseInt(calculon.valueB);
+        console.log(calculon.valueB)
+        }else{
         calculon.valueA += arr[i];
         calculon.valueA = parseInt(calculon.valueA);
         console.log (calculon.valueA)
+        }
     }
 }
-const newOperator = () =>{
-    //if input = operator, store in operator 
-    //when another operator, perform current operation
-    //store result
-    //change operation to what was input.
-};
+
+
+//when another operator, perform current operation
+    
+ //store new operation
+
 
 const equals = () => {
+     if (calculon.operation === "+") {
+         add();
+         
+         calculon.input = []
+     } else if (str === "-") {
+         sub()
+         
+     } else if (str === "*") {
+         mult()
+         calculon.operation = str;
+         calculon.input = []
+     } else {
+         div();
+         calculon.operation = str;
+         calculon.input = []
+     }
+
     // -returns input converted to number
 }
 const clear = () => {
 //render()
+calculon.input = []
+calculon.valueA = 0
+calculon.valueB = 0
+calculon.operation = 'e'
 
 }
 
@@ -122,14 +149,14 @@ $("#div").click(function () {
 //if equals button - perform object's stored operation on valueA and valueB
 //return result to screen
 $("#e").click(function () {
-    sum();
+    equals();
     console.log('= clicked')
 });
 //button listeners - clear
 
 //if clear button render all
 $("#c").click(function () {
-    sum();
+    clear();
     console.log('c clicked')
 });
 
