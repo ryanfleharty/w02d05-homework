@@ -1,46 +1,59 @@
 
-//make calculator in html
-//style it in css
-//create screen obj
- const add = 
 
- }
- const sub = null
- const div = null
- const mult = null
-const screen = {
-    input: [],
-    output: [],
+const calculon = {
+    input:[],
+    valueA: [],
+    valueB: [],
+    operation: null
 }
-//create button class
-class Button {
-    constructor(value,target){
-        this.value = value;
-        this.target = target;
-    }
-}
-//render() function that renders the calculator at load and resets (c button)
-const render = () => {
-    !screen.input;
-    !screen.output; 
-}
-    //it should be called when the C button is 
-//input() function that takes in the click and adds to input array
-const input = () => {
-    if (this.target) {
-        console.log(screen.input.push(this.input))
-    }
-}
-    //look for and test edge cases
-//calculate() function that calculates input and stores in variable
-const calculate = () => {
-    screen.input.forEach(element => {
-       if (screen.input[i] === '+') {
+//functions
+const collectInput = (str) =>{
 
-       }
-       
-       
-    });
-}
+};
+//collects strings and stores in input
+//until an operator
+const storeInputs = (arr) =>{};
+//concatinates strings and parses to number
+//stores in StoreA
+const storeValues = (num) =>{};
 
-//output() calls render then returns answer
+const newOperator = () =>{};
+//if input = operator, store in operator 
+//when another operator, perform current operation
+//store result
+//change operation to what was input.
+
+//operations
+const add = (valueA,valueB) =>{
+    sum = valueA + valueB
+    console.log(sum);
+    return sum
+};
+const Sub = (valueA,valueB) =>{
+    diff = valueA - valueB;
+    console.log(diff)
+    return diff
+};
+const mult =(valueA,valueB) =>{
+    prod = valueA * valueB;
+    console.log(prod)
+    return prod
+};
+const div = (valueA,valueB) =>{
+    quot = valueA / valueB
+    console.log(quot)
+    return quot
+};
+
+
+
+
+
+// //create button event handlers
+// const $plusbtn = $(plus);
+// $plusbtn.on('click', () => {
+// add();
+// console.log('button was clicked!!');
+// console.log(calculon.input);
+// console.log(calculon.output)
+// });
