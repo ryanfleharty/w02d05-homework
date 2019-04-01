@@ -80,6 +80,39 @@ const updateNumber = (button) => {
 //    }
 }
 
+const updateNumberKeyboard = (num) => {
+    if (num === "zero"){
+      screen.valueOne += '0';
+    } else if (num === 1) {
+      screen.valueOne += '1';
+    } else if (num === 2) {
+      screen.valueOne += '2';
+    } else if (num === 3) {
+      screen.valueOne += '3';
+    } else if (num === 4) {
+      screen.valueOne += '4';
+    } else if (num === 5) {
+      screen.valueOne += '5';
+    } else if (num === 6) {
+      screen.valueOne += '6';
+    } else if (num === 7) {
+      screen.valueOne += '7';
+    } else if (num === 8) {
+      screen.valueOne += '8';
+    } else if (num === 9) {
+      screen.valueOne += '9';
+    } else if (num === 142) {
+      screen.valueOne += '.';
+    }
+//    if (screen.currentValue === "one"){
+      $('.screen').text(screen.valueOne)
+//    } else {
+//      $('.screen').text(screen.valueTwo)
+//    }
+}
+
+
+
 const dynamicText = () => {
 if (screen.valueOne.length > 16 && screen.valueOne.length < 21) {
   $('.screen').css('font-size', fontSize)
@@ -130,7 +163,7 @@ const screen = {
   }
 }
 
-
+// click events
 
 $('#equals').on('click', function(){
   resetFontSize();
@@ -215,3 +248,105 @@ if (screen.valueOne.length < 131) {
   alert("Maximum Input Reached!")
 }
 })
+
+//keyboard events
+//equals
+$(document).keydown(function(keyPressed) {
+  if (keyPressed.keyCode == 13) {
+    console.log("enter key");
+    resetFontSize();
+    pendingCalculation = false;
+    if (!screen.equalChain){
+      screen.valueOld = screen.valueOne;
+    }
+    $('.screen').text("");
+    console.log(screen.equalChain);
+    console.log(`${screen.valueOld} -- valueOld`);
+    console.log(`${screen.valueOne} -- valueOne`);
+    console.log(`${screen.valueTwo} -- valueTwo`);
+    if (screen.equalChain){
+       screen.calculate(screen.valueOldNumber(),screen.valueOneNumber());
+    } else {
+      screen.calculate(screen.valueOneNumber(),screen.valueTwoNumber())
+    }
+    screen.equalChain = true;
+    console.log(screen.equalChain);
+    console.log(`${screen.valueOld} -- valueOld`);
+    console.log(`${screen.valueOne} -- valueOne`);
+    console.log(`${screen.valueTwo} -- valueTwo`);
+  }
+ });
+//add
+$(document).keydown(function(keyPressed) {
+  if (keyPressed.keyCode == 187 && keyPressed.shiftKey == true) {
+    if (pendingCalculation === false) {
+      screen.operation = "add";
+      screen.valueTwo = screen.valueOne;
+      screen.valueOne = "";
+      screen.equalChain = false;
+      pendingCalculation = true;
+      $('.screen').text("")
+      resetFontSize();
+    }
+  }
+ });
+// subtract
+$(document).keydown(function(keyPressed) {
+ if (keyPressed.keyCode == 189) {
+   if (pendingCalculation === false) {
+   screen.operation = "subtract";
+   screen.valueTwo = screen.valueOne;
+   screen.valueOne = "";
+   screen.equalChain = false;
+   pendingCalculation = true;
+   $('.screen').text("")
+   resetFontSize();
+ }
+ }
+});
+// multiply
+$(document).keydown(function(keyPressed) {
+ if (keyPressed.keyCode == 56 && keyPressed.shiftKey == true) {
+   if (pendingCalculation === false) {
+   screen.operation = "multiply";
+   screen.valueTwo = screen.valueOne;
+   screen.valueOne = "";
+   screen.equalChain = false;
+   pendingCalculation = true;
+   $('.screen').text("")
+   resetFontSize();
+ }
+ }
+});
+// divide
+$(document).keydown(function(keyPressed) {
+ if (keyPressed.keyCode == 191) {
+   if (pendingCalculation === false) {
+   screen.operation = "divide";
+   screen.valueTwo = screen.valueOne;
+   screen.valueOne = "";
+   screen.equalChain = false;
+   pendingCalculation = true;
+   $('.screen').text("")
+   resetFontSize();
+ }
+ }
+});
+// clear
+$(document).keydown(function(keyPressed) {
+ if (keyPressed.keyCode == 8) {
+  document.location.reload()
+ }
+});
+// numbers
+$(document).keydown(function(keyPressed) {
+ if (keyPressed.keyCode >= 48 && keyPressed.keyCode <=57 || keyPressed.keyCode === 190) {
+   if (screen.valueOne.length < 131) {
+     dynamicText()
+     const keyNumber = keyPressed.keyCode - 48;
+     updateNumberKeyboard(keyNumber);
+   } else {
+     alert("Maximum Input Reached!")
+   }
+ }
+});
