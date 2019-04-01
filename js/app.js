@@ -1,97 +1,67 @@
-// operation should start as equals() 
+
 const calculon = {
-    input:[],
+    input: [],
     valueA: 0,
     valueB: 0,
-    operation: 'e'
+    operation: 'e',
+    output: 0,
 }
-//functions
-//if operator, store input in value A until another operator
-const checkForOperation = (str) => {
-    if (str === "+" || "-" || "*" || "/"||'e') {
-        calculon.operation = str;
-        convertInputToValue();
-        console.log(calculon.operation)
-    }else{}
-}
+
 const collectInput = (str) =>{
-checkForOperation();
-calculon.input.push(str);
-console.log(calculon.input)
-};
-//concatinates strings and parses to number
-//stores in StoreA
-const convertInputToValue =(arr) => {
-    arr = calculon.input;
-    for (let i = 0; i < calculon.input.length; i++) {
-        if (calculon.input){
-        calculon.valueB += arr[i];
-        calculon.valueB = parseInt(calculon.valueB);
-        console.log(calculon.valueB)
-        }else{
-        calculon.valueA += arr[i];
-        calculon.valueA = parseInt(calculon.valueA);
-        console.log (calculon.valueA)
+    //if equals
+    //push a to b
+    //input to a
+    //run stored operation
+    //return to screen and push return to a
+
+if(str === 'e'){
+    calculon.valueB = calculon.valueA;
+        if (calculon.operation === "+") {
+            calculon.result = calculon.valueA + calculon.valueB
+            console.log(calculon.result);
+        } else if (calculon.operation === '-') {
+             calculon.result = calculon.valueA - calculon.valueB
+             console.log(calculon.result);
+        } else if (calculon.operation === '*') {
+            calculon.result = calculon.valueA * calculon.valueB
+            console.log(calculon.result);
+        } else {
+           calculon.result = calculon.valueA / calculon.valueB
+           console.log(calculon.result);
         }
+    }else if (str === "+" || str === '*' || str === '-' || str === "/"){
+            for (let i = 0; i < calculon.input.length; i++) {
+                calculon.valueA += calculon.input[i];
+                calculon.valueA = parseInt(calculon.valueA);
+            }
+            calculon.operation = str
+            calculon.input = []
+            console.log(calculon)
+        } else {
+            if (calculon.valueA){
+                calculon.valueB = calculon.valueA
+                console.log(calculon)
+            }else{
+                calculon.input.push(str);
+                console.log(calculon)
+            }
     }
 }
 
+//if operator
+    //move input to a
+    //store operator value
+//if number
+    //push to input
 
-//when another operator, perform current operation
-    
- //store new operation
-
-
-const equals = () => {
-     if (calculon.operation === "+") {
-         add();
-         
-         calculon.input = []
-     } else if (str === "-") {
-         sub()
-         
-     } else if (str === "*") {
-         mult()
-         calculon.operation = str;
-         calculon.input = []
-     } else {
-         div();
-         calculon.operation = str;
-         calculon.input = []
-     }
-
-    // -returns input converted to number
-}
 const clear = () => {
 //render()
 calculon.input = []
 calculon.valueA = 0
 calculon.valueB = 0
 calculon.operation = 'e'
-
+console.log('clear() has run')
 }
-
-//operations
-const add = (valueA,valueB) =>{
-    sum = valueA + valueB
-    console.log(sum);
-    return sum
-};
-const sub = (valueA,valueB) =>{
-    diff = valueA - valueB;
-    console.log(diff)
-    return diff
-};
-const mult =(valueA,valueB) =>{
-    prod = valueA * valueB;
-    console.log(prod)
-    return prod
-};
-const div = (valueA,valueB) =>{
-    quot = valueA / valueB
-    console.log(quot)
-    return quot
-};
 
 //use jQuery to collect text from mouse clicks in input array
 //if number button - add to input array
@@ -130,19 +100,19 @@ $("#0").click(function () {
 //if operator button - replace stored operator 
 //if operator button store screen results to input
 $("#add").click(function () {
-    add();
+    collectInput("+")
     console.log('+')
 });
 $("#sub").click(function () {
-    sub();
+    collectInput("-")
     console.log('-')
 });
 $("#mult").click(function () {
-    mult();
+    collectInput("*")
     console.log('*')
 });
 $("#div").click(function () {
-    div();
+    collectInput("/")
     console.log('/')
 });
 //button listeners - equals
