@@ -153,7 +153,7 @@ function refreshScreen()
 
 //Initial screen refresh:
 refreshScreen();
-
+clearButton();
 
 
 
