@@ -1,6 +1,3 @@
-console.log("Hello World!");
-
-
 
 
 {// PSUEDO CODE
@@ -126,7 +123,7 @@ const screen = {
     } else if (this.operation === "divide"){
       divide(one,two);
     } else {
-      this.display = "ERROR--NEED OPERATION";
+      this.display = "ERROR";
     }
 //    this.operation = "";
     $('.screen').append(this.display);
