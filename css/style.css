@@ -1,0 +1,54 @@
+h1
+{
+	text-align: left;
+	font-family: sans-serif;
+}
+
+p
+{
+	text-align: left;
+	font-family: serif;
+}
+
+.screen
+{
+	background-color: lightgrey;
+	color: green;
+	text-align: right;
+	font-family: monospace;
+	font-size: 30px;
+	width: 400px;
+	position: relative;
+}
+#line0
+{
+	background-color: grey;
+	color: white;
+}
+.line
+{
+	display: inline-block;
+	width: 400px;
+}
+
+.button
+{
+	font-family: monospace;
+	font-size: 50px;
+	color: #471e00;
+	border-style: solid;
+	border-width: 3px;
+	border-color: grey;
+	margin: 2px 0px 2px 0px;
+}
+
+#add
+{
+	width: 2em;
+}
+#enter
+{
+	width: 4em;
+}
+
+
