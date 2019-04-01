@@ -1,18 +1,12 @@
-
-
-console.log("JS running");
-
-// CALCULATOR APP
 const number = {
     entered: [], // ==> the string of numbers being built, to be stored then cleared upon operator click
-    clicked: 0, // ==> the number string that's just been clicked 
+    clicked: "", // ==> the number string that's just been clicked 
     $display: 0, // ==> What's on the page via jQuery
-    first: 0, // ==> the first number logged
-    second: 0 // ==> the second number logged post operator
+    first: "", // ==> the first number logged
+    second: "", // ==> the second number logged POST OPERATOR
+    operator: "", // ==> holds the type of operation
+    answer: ""
 };
-
-
-
 
 // CURRENT ISSUE: The array prints everytime a number is clicked, including previously
 // entered numbers. Needs to REPLACE/REFRESH the array each time a number is clicked
@@ -21,66 +15,82 @@ const number = {
 // This function needs to keep things in string form to concatenate!
 const enterNumber = (e) => {
     number.clicked = e.target.id;
-    number.entered = number.entered + number.clicked;
+    number.entered.push(number.clicked);
     console.log(number.entered); // <== updating each click!
-    $(`.display`).replaceWith(number.entered); // <== not replacing with update each click!
+    $(`.display`).text(number.entered.join("")); // <== displays numbers entered! 
 };
     
 
 
+// let a = 1;
+// let b = 2;
+// let c = "add";
+// let problem = a +c + b;
+// const equate = (c) => {
+//     if (c === "add"){
+//         console.log(a + b);
+//     };
+// };
+// equate(c);
+
 
 // OPERATOR FUNCTIONS
 
+let addingEquation;
 const add = (e) => {
     console.log("Adding!");
-    console.log(e.target.id);
-    // 1. turn the entered array into a single number instead of a string of numbers
-    // 2. store the number into a variable (num1 maybe)
-    // 3. CLEAR the entered array
-    // 4. display num1 and operator
-    // 5. 
-    };
+    number.first = number.entered.join(""); // adds concatenated number string to first variable
+    number.entered = []; // clears entered array for next number
+    number.operator = "add";
+    console.log(number);
+};
+
 
 const subtract = (e) => {
     console.log("Subtracting!");
-
-    // 1. turn the entered array into a single number instead of a string of numbers
-    // 2. store the number into a variable (num1 maybe)
-    // 3. CLEAR the entered array
-    // 4. display num1 and operator
-    // 5. 
-    };
+    number.first = number.entered.join(""); // adds concatenated number string to first variable
+    number.entered = []; // clears entered array for next number
+    number.operator = "subtract";
+    console.log(number);
+};
 
 const multiply = (e) => {
     console.log("Multiplying!");
-
-    // 1. turn the entered array into a single number instead of a string of numbers
-    // 2. store the number into a variable (num1 maybe)
-    // 3. CLEAR the entered array
-    // 4. display num1 and operator
-    // 5. 
-    };
+    number.first = number.entered.join(""); // adds concatenated number string to first variable
+    number.entered = []; // clears entered array for next number
+    number.operator = "multiply";
+    console.log(number);
+};
 
 const divide = (e) => {
     console.log("Dividing!");
-
-    // 1. turn the entered array into a single number instead of a string of numbers
-    // 2. store the number into a variable (num1 maybe)
-    // 3. CLEAR the entered array
-    // 4. display num1 and operator
-    // 5. 
-    };
+    number.first = number.entered.join(""); // adds concatenated number string to first variable
+    number.entered = []; // clears entered array for next number
+    number.operator = "divide";
+    console.log(number);
+};
 
 const equals = (e) => {
-    console.log("Equals!");
-
-    // 1. turn the entered array into a single number instead of a string of numbers
-    // 2. store the number into a variable (num1 maybe)
-    // 3. CLEAR the entered array
-    // 4. display num1 and operator
-    // 5. 
+    number.second = number.entered.join(""); // adds concatenated number string to first variable
+    number.entered = []; // clears entered array for next number
+     if (number.operator === "add") {
+        answer = Number(number.first) + Number(number.second);
+    } else if (number.operator === "subtract") {
+        answer = Number(number.first) - Number(number.second);
+    } else if (number.operator === "multiply") {
+        answer = Number(number.first) * Number(number.second);
+    } else {
+        answer = Number(number.first) / Number(number.second);
+    }
+    $(`.display`).text(answer)
 };
    
+const clear = (e) => {
+    console.log("Clear!");
+    number.entered.pop(); // deletes last item in entered array
+    console.log(number.entered);
+    $(`.display`).text(number.entered)
+};
 
 
 
@@ -90,6 +100,6 @@ $('.operators #subtract').on('click', subtract);
 $('.operators #multiply').on('click', multiply);
 $('.operators #divide').on('click', divide);
 $('.operators #equals').on('click', equals);
-
+$('.operators #clear').on('click', clear);
 
 // Need operators - , + , / , * , and = (return);
