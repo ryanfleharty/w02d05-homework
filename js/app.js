@@ -21,13 +21,6 @@ let screenText = "";
 
 const render = () => {
     window.location.reload(true);
-    // $('.screen').remove();
-    // $('.outside').prepend('<div class="screen">0</div>');
-    // num1 = "";
-    // num2 = "";
-    // num1Array = [];
-    // num2Array = [];
-    // actionArray = [];  
 }
 
 const buttonClick = () => {
@@ -35,7 +28,7 @@ const buttonClick = () => {
     //grab text from button and put it in screen
     let btn = $(e.target).text();
 
-    // make string
+    // screen text
     const numArr = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '+', '-', '*', '/'];
     for (let i = 0; i < numArr.length; i++){
          if($(e.target).text() === numArr[i]){
@@ -45,7 +38,7 @@ const buttonClick = () => {
     };
     console.log(btn);
 
-    
+    //original array
     if (btn != "=") {
     num1Array.push(btn);
     }
@@ -54,6 +47,7 @@ const buttonClick = () => {
 
     runActions();
 
+    //buttons
     if ($(e.target).text() === "=") {
         $('.screen').append(total);  
     }
@@ -76,15 +70,11 @@ const makeArrays = (e) => {
         }
     });
 
-    // put strings together into one string
-    // convert string to number
-
+    // put strings from arrays into strings
     num1 = num2Array.join("");
     num2 = num1Array.join("");
     num1 = parseFloat(num1);
     num2 = parseFloat(num2);
-    // console.log(num1);
-    // console.log(num2);
 }
 
 const runActions = () => {
