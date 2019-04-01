@@ -1,0 +1,109 @@
+
+.conatiner {
+    height: 1256px;
+    width: 1256px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+
+}
+
+.flex-row {
+    flex-direction: row;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.flex-double {
+    flex: 2;
+}
+
+.calc-form {
+    background: rgb(20, 77, 124);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-height: 700px;
+    max-width: 350px;
+    width: 90%;
+    padding: 15px;
+    border: solid 5px rgb(49, 85, 114);
+    box-shadow: 25px 35px 35px -25px hsl(0, 19%, 21%);
+    border-top-left-radius: 250px 110px;
+    border-top-right-radius: 250px 110px;
+    border-bottom-left-radius: 35px;
+    border-bottom-right-radius: 35px;
+}
+
+.calc-resultForm {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    background: #AED6F1;
+    border: solid 3px #EBF5FB;
+    height: 100px;
+    width: 100%;
+    border-top-left-radius: 250px 110px;
+    border-top-right-radius: 250px 110px;
+    border-bottom-left-radius: 35px;
+    border-bottom-right-radius: 35px;
+
+
+}
+
+.calc-resultInput {
+    font-size: 30px;
+    overflow: hidden;
+    text-align: right;
+    color: #000000;
+    height: 70px;
+    width: 50%;
+
+}
+
+.logo {
+    text-align: center;
+    font-weight: bold;
+    line-height: 50px;
+    width: 250px;
+    height: 50px;
+    border-radius: 35px 30px 35px 30px;
+    border: solid 2px #FFFFFF;
+    box-shadow: 15px 30px 25px -25px hsl(0, 19%, 21%);
+    color: #FFFFFF;
+    background: #83A9B8;
+}
+
+.calc-button {
+    background: transparent;
+    color: #78CA9E;
+    font-size: 30px;
+    transition: all .5s ease;
+    border-radius: 27px;
+    flex: 1;
+    box-shadow: 15px 30px 25px -25px hsl(0, 19%, 21%);
+    border: transparent 6px #78CA9E;
+    width: 70px;
+    height: 70px;
+}
+
+.calc-button:hover {
+    box-shadow: 1px 7px 3px -5px hs1(0, 0%, 0%, .3);
+}
+
+.clear-button {
+    background: transparent;
+    color: #78CA9E;
+    font-size: 30px;
+    transition: all .5s ease;
+    border-radius: 27px;
+    flex: 1;
+    box-shadow: 15px 30px 25px -25px hsl(0, 19%, 21%);
+    border: transparent 6px #78CA9E;
+    width: 70px;
+    height: 70px;
+}
