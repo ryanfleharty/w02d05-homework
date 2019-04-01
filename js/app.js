@@ -17,18 +17,20 @@ const collectInput = (str) =>{
 if(str === 'e'){
     calculon.valueB = calculon.valueA;
         if (calculon.operation === "+") {
-            calculon.result = calculon.valueA + calculon.valueB
-            console.log(calculon.result);
+            calculon.output = calculon.valueA + calculon.valueB
+            console.log(calculon.output);
         } else if (calculon.operation === '-') {
-             calculon.result = calculon.valueA - calculon.valueB
-             console.log(calculon.result);
+             calculon.output = calculon.valueA - calculon.valueB
+             console.log(calculon.output);
         } else if (calculon.operation === '*') {
-            calculon.result = calculon.valueA * calculon.valueB
-            console.log(calculon.result);
+            calculon.output = calculon.valueA * calculon.valueB
+            console.log(calculon.output);
         } else {
-           calculon.result = calculon.valueA / calculon.valueB
-           console.log(calculon.result);
+           calculon.output = calculon.valueA / calculon.valueB
+           console.log(calculon.output);
         }
+        calculon.valueA = calculon.output
+        clear()
     }else if (str === "+" || str === '*' || str === '-' || str === "/"){
             for (let i = 0; i < calculon.input.length; i++) {
                 calculon.valueA += calculon.input[i];
@@ -39,7 +41,7 @@ if(str === 'e'){
             console.log(calculon)
         } else {
             if (calculon.valueA){
-                calculon.valueB = calculon.valueA
+                calculon.valueB = parseInt(str)
                 console.log(calculon)
             }else{
                 calculon.input.push(str);
@@ -60,6 +62,7 @@ calculon.input = []
 calculon.valueA = 0
 calculon.valueB = 0
 calculon.operation = 'e'
+calculon.output= 0
 console.log('clear() has run')
 }
 
@@ -119,7 +122,7 @@ $("#div").click(function () {
 //if equals button - perform object's stored operation on valueA and valueB
 //return result to screen
 $("#e").click(function () {
-    equals();
+    collectInput('e')
     console.log('= clicked')
 });
 //button listeners - clear
