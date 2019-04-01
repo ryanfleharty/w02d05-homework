@@ -117,9 +117,18 @@ const doMath = () => {
             } else if (symbol[0] === "/"){
                 finalResult = parseInt(num1) / parseInt(num2);
             }
-            $('.display').append(`<span>${finalResult}</span>`);  //appends finalResult to the display
+            //appends finalResult to the display   
+            $('.display').append(`<span>${finalResult}</span>`);  
+            
         }
+
     })
+            // resets the finalResult to operation so the user
+            // can keep doing stuff after hitting equals
+            finalResult = finalResult.toString();
+            operation.splice(0);
+            operation.push(finalResult);
+            $('.display').append(`<span>${finalResult}</span>`);  
 };
 
 
