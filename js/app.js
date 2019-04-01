@@ -8,10 +8,6 @@ const number = {
     answer: ""
 };
 
-// CURRENT ISSUE: The array prints everytime a number is clicked, including previously
-// entered numbers. Needs to REPLACE/REFRESH the array each time a number is clicked
-// and show only the most updated version of the entered array.
-
 // This function needs to keep things in string form to concatenate!
 const enterNumber = (e) => {
     number.clicked = e.target.id;
@@ -19,22 +15,10 @@ const enterNumber = (e) => {
     console.log(number.entered); // <== updating each click!
     $(`.display`).text(number.entered.join("")); // <== displays numbers entered! 
 };
-    
-
-
-// let a = 1;
-// let b = 2;
-// let c = "add";
-// let problem = a +c + b;
-// const equate = (c) => {
-//     if (c === "add"){
-//         console.log(a + b);
-//     };
-// };
-// equate(c);
 
 
 // OPERATOR FUNCTIONS
+// need to be refactored at some point; lots of repetition below
 
 let addingEquation;
 const add = (e) => {
