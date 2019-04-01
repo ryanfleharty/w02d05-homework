@@ -10,75 +10,135 @@ const number = {
 
 // This function needs to keep things in string form to concatenate!
 const enterNumber = (e) => {
-    number.clicked = e.target.id;
-    number.entered.push(number.clicked);
-    console.log(number.entered); // <== updating each click!
-    $(`.display`).text(number.entered.join("")); // <== displays numbers entered! 
+    if (number.answer !== "") {
+        // number.first === toString(number.answer);
+        // number.first === "";
+        console.log(e.target.id);
+        number.second = e.target.id;
+        console.log(number);
+        number.entered.push(e.target.id);
+        $(`.display`).text(number.entered.join(""));
+    } else {
+        number.clicked = e.target.id;
+        number.entered.push(number.clicked);
+        console.log(number.entered); // <== updating each click!
+        $(`.display`).text(number.entered.join("")); // <== displays numbers entered! 
+    };
 };
 
 
 // OPERATOR FUNCTIONS
 // need to be refactored at some point; lots of repetition below
 
-let addingEquation;
+
 const add = (e) => {
     console.log("Adding!");
-    number.first = number.entered.join(""); // adds concatenated number string to first variable
-    number.entered = []; // clears entered array for next number
-    number.operator = "add";
-    console.log(number);
+    if (number.answer !== "") {
+        console.log("answer is not empty");
+        number.entered = [];
+        number.operator = "add";
+        number.first = number.answer.toString();
+        console.log(number);
+    } else {
+        number.first = number.entered.join(""); // adds concatenated number string to first variable
+        number.entered = []; // clears entered array for next number
+        number.operator = "add";
+        console.log("answer is empty");
+        console.log(number);
+    };
 };
 
 
 const subtract = (e) => {
-    console.log("Subtracting!");
-    number.first = number.entered.join(""); // adds concatenated number string to first variable
-    number.entered = []; // clears entered array for next number
-    number.operator = "subtract";
-    console.log(number);
+    if (number.answer !== "") {
+        console.log("answer is not empty");
+        number.entered = [];
+        number.operator = "subtract";
+        number.first = number.answer.toString();
+        console.log(number);
+    } else {
+        number.first = number.entered.join(""); // adds concatenated number string to first variable
+        number.entered = []; // clears entered array for next number
+        number.operator = "subtract";
+        console.log("answer is empty");
+        console.log(number);
+    };
 };
 
 const multiply = (e) => {
     console.log("Multiplying!");
-    number.first = number.entered.join(""); // adds concatenated number string to first variable
-    number.entered = []; // clears entered array for next number
-    number.operator = "multiply";
-    console.log(number);
+    if (number.answer !== "") {
+        console.log("answer is not empty");
+        number.entered = [];
+        number.operator = "multiply";
+        number.first = number.answer.toString();
+        console.log(number);
+    } else {
+        number.first = number.entered.join(""); // adds concatenated number string to first variable
+        number.entered = []; // clears entered array for next number
+        number.operator = "multiply";
+        console.log("answer is empty");
+        console.log(number);
+    };
 };
 
 const divide = (e) => {
     console.log("Dividing!");
-    number.first = number.entered.join(""); // adds concatenated number string to first variable
-    number.entered = []; // clears entered array for next number
-    number.operator = "divide";
-    console.log(number);
+    if (number.answer !== "") {
+        console.log("answer is not empty");
+        number.entered = [];
+        number.operator = "divide";
+        number.first = number.answer.toString();
+        console.log(number);
+    } else {
+        number.first = number.entered.join(""); // adds concatenated number string to first variable
+        number.entered = []; // clears entered array for next number
+        number.operator = "divide";
+        console.log("answer is empty");
+        console.log(number);
+    };
 };
 
-// UNFINISHED:
-// They should then be able to keep going with the resulting number by hitting another operation 
-// button, another number, then = again to get a new result.
 
 
 const equals = (e) => {
-    number.second = number.entered.join(""); // adds concatenated number string to first variable
-    number.entered = []; // clears entered array for next number
-     if (number.operator === "add") {
-        answer = Number(number.first) + Number(number.second);
-    } else if (number.operator === "subtract") {
-        answer = Number(number.first) - Number(number.second);
-    } else if (number.operator === "multiply") {
-        answer = Number(number.first) * Number(number.second);
+    if (number.second === "") {
+        number.second = number.entered.join(""); // adds concatenated number string to second variable
+        number.entered = []; // clears entered array for next number
+        if (number.operator === "add") {
+            number.answer = Number(number.first) + Number(number.second);
+        } else if (number.operator === "subtract") {
+            number.answer = Number(number.first) - Number(number.second);
+        } else if (number.operator === "multiply") {
+            number.answer = Number(number.first) * Number(number.second);
+        } else {
+            number.answer = Number(number.first) / Number(number.second);
+        };
+        console.log(number);
     } else {
-        answer = Number(number.first) / Number(number.second);
-    }
-    $(`.display`).text(answer)
+        if (number.operator === "add") {
+            number.answer = Number(number.first) + Number(number.second);
+        } else if (number.operator === "subtract") {
+            number.answer = Number(number.first) - Number(number.second);
+        } else if (number.operator === "multiply") {
+            number.answer = Number(number.first) * Number(number.second);
+        } else {
+            number.answer = Number(number.first) / Number(number.second);
+        };
+        console.log(number);
+    };
+     
+    $(`.display`).text(number.answer)
 };
    
 const clear = (e) => {
-    console.log("Clear!");
-    number.entered.pop(); // deletes last item in entered array
-    console.log(number.entered);
-    $(`.display`).text(number.entered)
+    number.entered = [];
+    number.first = "";
+    number.second = "";
+    number.answer = "";
+    number.clicked = "";
+    $(`.display`).text(number.answer)
+
 };
 
 
