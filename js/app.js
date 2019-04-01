@@ -18,13 +18,7 @@ class Operator {
 };
 
 
-// Things we need to track
-
-// The render function:
-// Add event listener to the buttonHolder class div
-// Append operator buttons to the buttonHolder div
-// Append number buttons to the buttonHolder div
-// Clear the display
+//Global Variables
 
 let screenString = '';
 let operation = [];
@@ -33,13 +27,12 @@ let num2 = [];
 let finalResult;
 let symbol;
 
+//listenToStuff function adds listener to the container for the buttons 
+//and assigns each button a specific id based on what it is - had to be above render() to call render()
 const listenToStuff = () => {
 
     $('.buttonHolder').on('click', (e) => {
-        // console.log(e.target.className, '<-- tagName value');
-        // console.log(e.target, '<-- e.target');
-        
-        
+
         const numArr = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '+', '-', '*', '/'];
         for (let i = 0; i < numArr.length; i++){
             if(e.target.id === numArr[i]){
@@ -52,9 +45,6 @@ const listenToStuff = () => {
             } else if (e.target.id === 'equals'){
                 render();
                 doMath();
-                
-                //bug with this, cant enter numbers after 
-                //hitting the equals sign
             }
         }        
     })
@@ -70,7 +60,7 @@ const render = () => {
     
     //Function to make the buttons and add them to the page
     const makeButtons = () => {
-    //makes operator buttons differently
+    //makes operator buttons
     const oppArr = ['+', '-', '*', '/']
     for (let i = 0; i < oppArr.length; i++) {
         new Operator(oppArr[i])
@@ -78,10 +68,11 @@ const render = () => {
         $(oppsButton).attr('id', oppArr[i]);
         $('.buttonHolder').append(oppsButton)
     }
-
+    //makes clear button
     const clearButton = $('<div id="clear">Clear</div>');
     $('.buttonHolder').append(clearButton);
 
+    //makes number buttons
     const numArr = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
     for (let i = 0; i < numArr.length; i++) {
         new Button(numArr[i]);
@@ -89,28 +80,25 @@ const render = () => {
         $(numButton).attr('id', numArr[i]);
         $('.buttonHolder').append(numButton);
     }
-    //makes equal button differently
+    //makes equals button
     $('.buttonHolder').append('<div id="equals">=</div>')
 };
     makeButtons();
     listenToStuff();
-}
+};
 
+//calls render function when page is initially loaded
 render();
 
 
 
-// when it gets to this point, operation = ["1", "2", "+", "2"];
-// when I console.log operation after line 110, it has only the operator left
-// num1 and num2 however come back as empty strings
-
-
+//doMath function does the math  //operation array is what is filled up when the buttons are clicked
 const doMath = () => {
     
     operation.forEach((item, index) => {
 
         if (isNaN(item)){
-            // num2 = operation.splice(0, index).join('');
+            // num2 = operation.splice(0, index).join('');  <-- I thought this would work here but it doesnt
             // num1 = operation.splice(1).join('');
             symbol = operation.slice(index);
             num2 = symbol.splice(1);
@@ -119,6 +107,7 @@ const doMath = () => {
             num1 = num1.join('');
             num2 = num2.join('');
             
+            //logic for actually doing the math operations
             if (symbol[0] === "+"){
                 finalResult = parseInt(num1) + parseInt(num2);
             } else if (symbol[0] === "-"){
@@ -128,10 +117,10 @@ const doMath = () => {
             } else if (symbol[0] === "/"){
                 finalResult = parseInt(num1) / parseInt(num2);
             }
-            $('.display').append(`<span>${finalResult}</span>`);
+            $('.display').append(`<span>${finalResult}</span>`);  //appends finalResult to the display
         }
     })
-}
+};
 
 
 
