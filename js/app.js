@@ -54,6 +54,11 @@ const divide = (e) => {
     console.log(number);
 };
 
+// UNFINISHED:
+// They should then be able to keep going with the resulting number by hitting another operation 
+// button, another number, then = again to get a new result.
+
+
 const equals = (e) => {
     number.second = number.entered.join(""); // adds concatenated number string to first variable
     number.entered = []; // clears entered array for next number
