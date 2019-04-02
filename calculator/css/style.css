@@ -1,0 +1,33 @@
+td {
+    margin: auto;
+    text-align: center;
+}
+table {
+    border: 1px solid black;
+    width: 15%;
+    display: center;
+}
+#screen {
+    width: 15%; 
+}
+div {
+    margin: center;
+    width: 80%;
+}
+input {
+    width: 23%
+}
+.empty{
+    border: none;
+}
+
+/* .col {
+    border: 1px solid black;
+    padding: 20px;
+    width: 10px;
+    display: inline-block;
+}
+#container {
+    border: 1px solid black;
+    width: 20%;
+} */
