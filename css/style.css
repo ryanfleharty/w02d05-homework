@@ -1,0 +1,10 @@
+
+#CLEAR {
+  font-family: monospace;
+}
+
+.container {
+  width: 128px;
+  margin: auto;
+  background: rgb(100, 90,150);
+}
