@@ -4,15 +4,45 @@ const calculon = {
     valueB: '',
     operation: '',
     output: '',
+   
 }
-
-
-
-
-
 const collectInput = (btnValue) => {
-    console.log('input collected');
-    return btnValue
+    if (btnValue === "+"||btnValue === "-"||btnValue === "*"||btnValue === "/") {
+        calculon.operation = btnValue
+        console.log(calculon)
+    } else if (btnValue === "e") {
+        if (calculon.operation === "+") {
+            calculon.output = calculon.valueA + calculon.valueB
+            console.log(calculon.output);
+            $('h3').text(calculon.output)
+        } else if (calculon.operation === '-') {
+            calculon.output = calculon.valueA - calculon.valueB
+            console.log(calculon.output);
+            d$('h3').text(calculon.output)
+        } else if (calculon.operation === '*') {
+            calculon.output = calculon.valueA * calculon.valueB
+            console.log(calculon.output);
+            $('h3').text(calculon.output)
+        } else {
+            calculon.output = calculon.valueA / calculon.valueB
+            
+        }
+    calculon.valueA=calculon.output
+    calculon.valueB=""
+    } else {
+        if(calculon.valueA ===""){
+            calculon.valueA = parseInt(btnValue)
+            console.log(calculon)
+        }
+        else{calculon.valueB = parseInt(btnValue)}
+    }       console.log(calculon)
+   
+}
+const runNumbers = () => {
+    console.log('running the numbers')
+}
+const runEquals = () => {
+    console.log("running equals")
 }
 
 $("#1").click(function () {
@@ -71,7 +101,6 @@ $("#0").click(function () {
 $("#add").click(function () {
     collectInput("+")
     $('h3').text("+")
-    console.log('+')
 });
 $("#sub").click(function () {
     collectInput("-")
@@ -94,6 +123,8 @@ $("#div").click(function () {
 $("#e").click(function () {
     collectInput('e')
     $('h3').text("=")
+    $('h3').text(calculon.output)
+    calculon.output = ''
     console.log('= clicked')
 });
 // //button listeners - clear
