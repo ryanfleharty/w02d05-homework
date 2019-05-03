@@ -6,8 +6,7 @@ $(".btn").on('click',function(){
 
 // Process the = button
 $(".calc-btn").on('click',function(){
-   const expression = $(".display").val();
-   $(".display").val(eval(expression));
+   $(".display").val(eval($(".display").val()));
 });
 
 // Process the clear button
